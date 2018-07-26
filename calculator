@@ -1,0 +1,65 @@
+package com.example.ci_2018.myapplication;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class SimpleCalc extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_simple_calc);
+
+        Button b1 = this.findViewById(R.id.buttonS);
+        Button b2 = this.findViewById(R.id.buttonA);
+        Button b3 = this.findViewById(R.id.buttonM);
+        Button b4 = this.findViewById(R.id.buttonD);
+
+        Button[] buttons = {b1, b2, b3, b4};
+
+        int counter  = 0;
+        while (counter != buttons.length)
+        {
+            buttons[counter].setOnClickListener(this);
+            counter++;
+        }
+    }
+
+
+
+    @Override
+    public void onClick(View view) {
+        Button b = (Button) view;
+        String action = b.getText().toString();
+
+        TextView n1 = this.findViewById(R.id.editText1);
+        TextView n2 = this.findViewById(R.id.editText2);
+
+        TextView output = this.findViewById(R.id.textView2);
+
+        double number1 = Double.parseDouble(n1.getText().toString());
+        double number2 = Double.parseDouble(n2.getText().toString());
+
+        if (action.equals ("+")){
+            output.setText(number1 + number2 + "");
+        }
+        else if (action.equals ("-")){
+            output.setText(number1 - number2 + "");
+        }
+        else if (action.equals ("*")){
+            output.setText(number1 * number2 + "");
+        }
+        else if (action.equals ("/")){
+            output.setText(number1 / number2 + "");
+        }
+    }
+    public void OpenMain(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+}
+
