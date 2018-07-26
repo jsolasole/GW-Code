@@ -1,0 +1,126 @@
+package com.example.ci_2018.tickytoe;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    boolean win = true;
+    int turn = 0;
+
+    boolean PlayerX = true;
+    Button b11, b12, b13, b21, b22, b23, b31, b32, b33;
+    Button[] buttons;
+    TextView winner;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b11 = this.findViewById(R.id.button1);
+        b12 = this.findViewById(R.id.button2);
+        b13 = this.findViewById(R.id.button3);
+
+        b21 = this.findViewById(R.id.button4);
+        b22 = this.findViewById(R.id.button5);
+        b23 = this.findViewById(R.id.button6);
+
+        b31 = this.findViewById(R.id.button7);
+        b32 = this.findViewById(R.id.button8);
+        b33 = this.findViewById(R.id.button9);
+
+        winner = this.findViewById(R.id.textView);
+
+        buttons = new Button[] {b11, b12, b13, b21, b22, b23, b31, b32, b33};
+
+        for(Button b : buttons){
+            b.setOnClickListener(this);
+        }
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        Button b = (Button) view;
+        int turn = 0;
+
+        if (PlayerX == true) {
+            if (b.getText().equals("")) {
+                b.setText("X");
+                PlayerX = false;
+                turn++;
+            }
+        } else {
+            if (b.getText().equals("")) {
+                b.setText("O");
+                PlayerX = true;
+                turn++;
+            }
+        }
+        if (turn >= 8){
+            winner.setText("Draw");
+            turn = 0;
+        }
+
+        if ((b11.getText().equals("X")) && (b12.getText().equals("X")) && (b13.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b11.getText().equals("O")) && (b12.getText().equals("O")) && (b13.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+
+        if ((b11.getText().equals("X")) && (b22.getText().equals("X")) && (b33.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b11.getText().equals("O")) && (b22.getText().equals("O")) && (b33.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+        if ((b21.getText().equals("X")) && (b22.getText().equals("X")) && (b23.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b21.getText().equals("O")) && (b22.getText().equals("O")) && (b23.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+
+        if ((b31.getText().equals("X")) && (b32.getText().equals("X")) && (b33.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b31.getText().equals("O")) && (b32.getText().equals("O")) && (b33.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+
+        if ((b12.getText().equals("X")) && (b22.getText().equals("X")) && (b32.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b12.getText().equals("O")) && (b22.getText().equals("O")) && (b32.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+
+        if ((b13.getText().equals("X")) && (b23.getText().equals("X")) && (b33.getText().equals("X"))) {
+            winner.setText("X Wins");
+            win = false;
+        } else if ((b13.getText().equals("O")) && (b32.getText().equals("O")) && (b33.getText().equals("O"))) {
+            winner.setText("O Wins");
+            win = false;
+        }
+
+        if ((b11.getText().equals("X")) && (b21.getText().equals("X")) && (b31.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b11.getText().equals("O")) && (b21.getText().equals("O")) && (b31.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+
+        if ((b13.getText().equals("X")) && (b22.getText().equals("X")) && (b31.getText().equals("X"))) {
+            winner.setText("X Wins");
+        } else if ((b13.getText().equals("O")) && (b22.getText().equals("O")) && (b31.getText().equals("O"))) {
+            winner.setText("O Wins");
+        }
+    }
+
+    public void reset(View view){
+
+        for(Button b : buttons){
+            b.setText("");
+            winner.setText("");
+            PlayerX = true;
+        }
+    }
+}
