@@ -1,0 +1,155 @@
+import java.util.concurrent.TimeUnit;
+
+public class Test {
+	public static void main(String[] args) {
+		System.out.println("You wake up in a dark room with three doors. Through the door on your left you hear a faint snoring ");
+		System.out.println("Through the door in front of you you hear a running water. Through the door on your right you hear nothing ");
+		System.out.println("You dont remember where you came from or who you are. A sign next to the door on the right says the following");
+		System.out.println("'This is a test, find the Grail and you pass the test. There are many perils in your way, ");
+		System.out.println("but win and you get the greatest power in the universe'");
+		System.out.println("'IMMORTALITY'");
+		System.out.println("Spooky stuff, but which way do you want to go first? (left, right, straight): ");
+	while (true) {
+			String direction = IO.readString();
+			int count = 0;
+			// Right CHEST
+			if (direction.equalsIgnoreCase("right")) 
+			{
+				System.out.println("You go right and you see a chest, what do you do? (open it, kick it, go back): ");
+				String chest = IO.readString();
+				// open chest
+				if (chest.equalsIgnoreCase("open it"))
+				{
+					System.out.println("in it is a note that says 'the grail lays in the place the means certain death'.");		
+					System.out.println("You pocket the note and go back where you started, now what? (left, right, foreward): ");
+				}	
+			
+			
+				// kick chest
+				if (chest.equalsIgnoreCase("kick it"))
+				{
+					System.out.println("You kick it and it explodes ");
+					while (count != 10) 
+					{
+						System.out.println("Game Over");
+						count = count + 1;
+					}
+					System.out.println("Loser");
+					return;
+				}
+				//Go back
+				if (chest.equalsIgnoreCase("go back")){
+					System.out.println("You get back what now (left, right, foreward): ");
+				}	
+			}
+			// Left TROLL
+			if (direction.equalsIgnoreCase("left")) {
+				System.out.println("Theres a scary troll over there are you sure? (proceed , go back): ");
+				String troll = IO.readString();
+				if (troll.equalsIgnoreCase("proceed")) {
+					System.out
+							.println("You walk up to the troll and he's sleeping. (sneak by, attack): ");
+				//sneak by
+					String trollPlan = IO.readString();
+					if (trollPlan.equalsIgnoreCase("sneak by")) {
+						System.out.println("You are able to successfully sneak by. You are now in a dark room with a man sitting in the corner on  plush chair. ");
+						System.out.println("He asks what you are doing. You tell him 'looking for the grail' he says there is a hint in a chest near by. you go back");
+						System.out.println("You are back where you started, now what?  (left, right, foreward): ");
+					}
+				//attack troll
+					if (trollPlan.equalsIgnoreCase("attack")) {
+						System.out.println("You kick him and he rolls over crushing you with his body. You are dead. Game Over");
+						while (count != 10) {
+							System.out.println("Game Over");
+							count = count + 1;
+						}
+						System.out.println("Loser");
+						return;
+					}
+
+				}
+				//go back
+				if (troll.equalsIgnoreCase("go back")) {
+					System.out.print("You go back scaredy cat, try sneaking around next time.");
+					System.out.println("You are back where you started, now what? (left, right, foreward): ");
+				}
+				
+			}
+			// Straight WATERFALL
+			if (direction.equalsIgnoreCase("foreward") || direction.equalsIgnoreCase("straight")) {
+				System.out.print("You go straight and you find yourself at the top of a  a waterfall, what do you do? (jump off, go back): ");
+				String waterfall = IO.readString();
+				//jump off
+				if (waterfall.equalsIgnoreCase("jump off")) {
+					System.out.println("Why did you jump off a waterfall? Now you are dead. Game Over");
+					while (count != 5) {
+						System.out.println(" - ");
+						try        
+						{
+						    Thread.sleep(1000);
+						} 
+						catch(InterruptedException ex) 
+						{
+						    Thread.currentThread().interrupt();
+						}
+						count = count + 1;
+					}
+					System.out.println("Wait a second");
+					try        
+					{
+					    Thread.sleep(3000);
+					} 
+					catch(InterruptedException ex) 
+					{
+					    Thread.currentThread().interrupt();
+					}
+					System.out.println("It looks like you are okay.");
+					try        
+					{
+					    Thread.sleep(2000);
+					} 
+					catch(InterruptedException ex) 
+					{
+					    Thread.currentThread().interrupt();
+					}
+					System.out.println("You wake up with a massive headache and stumble over towards white light coming from in front of you.");
+					System.out.println("On a pedestal sits a golden challace covered in jewels.");
+					try        
+					{
+					    Thread.sleep(6000);
+					} 
+					catch(InterruptedException ex) 
+					{
+					    Thread.currentThread().interrupt();
+					}
+					System.out.println("The Holy Grail");
+					try        
+					{
+					    Thread.sleep(2000);
+					} 
+					catch(InterruptedException ex) 
+					{
+					    Thread.currentThread().interrupt();
+					}
+					int number = 0;
+					while (number != 4) {
+						System.out.println("Winner");
+						number = number + 1;
+						try        
+						{
+						    Thread.sleep(1000);
+						} 
+						catch(InterruptedException ex) 
+						{
+						    Thread.currentThread().interrupt();
+						}
+					}
+					return;
+				}
+				else if (waterfall.equalsIgnoreCase("go back")) {
+				System.out.println("You are back where you started, now what? (left, right, foreward): ");
+				}
+			}
+		}
+	}
+}
