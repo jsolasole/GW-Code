@@ -1,0 +1,22 @@
+public class GuessingGame {
+	public static void main(String[] argd) {
+		int secretNumber = (int) (Math.random() * 999 + 1);
+		while (true) {
+			System.out.println("Guess a number: ");
+			while (true){
+			int guess = IO.readInt();
+
+			if (guess < secretNumber) {
+				System.out.print("Try a little higher: ");
+			}
+			if (guess == secretNumber) {
+				System.out.print("Wohoo You Got It!!");
+				System.out.print(" The secret number was " +secretNumber);
+			}
+			if (guess > secretNumber) {
+				System.out.print("Try a little lower: ");
+			}
+			}
+		}
+	}	
+}
